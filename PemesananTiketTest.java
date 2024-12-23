@@ -10,7 +10,7 @@ public class PemesananTiketTest {
 
     @Before
     public void setUp() {
-        app = new PemesananTiketApp(); // Inisialisasi aplikasi
+        app = new PemesananTiketApp();
     }
 
     @Test
@@ -44,12 +44,11 @@ public class PemesananTiketTest {
         app.quantityField.setText("1");
         app.addItem("Monaco vs Aston Villa", "VIP (Rp 250.000)");
 
-        // Hapus item
         app.table.setRowSelectionInterval(0, 0);
         app.deleteItem();
 
         DefaultTableModel model = (DefaultTableModel) app.table.getModel();
-        assertEquals(0, model.getRowCount()); // Pastikan tidak ada baris yang tersisa
+        assertEquals(0, model.getRowCount());
     }
 
     @Test
@@ -71,7 +70,6 @@ public class PemesananTiketTest {
         app.quantityField.setText("2");
         app.addItem("Benfica vs Barcelona", "Ekonomi (Rp 100.000)");
 
-        // Update item
         app.table.setRowSelectionInterval(0, 0);
         app.nameField.setText("Updated User");
         app.quantityField.setText("3");

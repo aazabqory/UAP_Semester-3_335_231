@@ -6,10 +6,11 @@ Aplikasi `Pemesanan Tiket Sepak Bola` adalah program Java yang memungkinkan peng
 
 - **Daftar Pertandingan**: Menampilkan daftar pertandingan sepak bola yang akan datang.
 - **Formulir Pemesanan**: Pengguna dapat memasukkan nama, jumlah tiket, dan memilih jenis kursi (Ekonomi, VIP, VVIP).
-- **Pengelolaan Tiket**: Menambahkan, menghapus, dan memperbarui pemesanan tiket.
+- **Pengelolaan Tiket**: Menambahkan, menghapus dan memperbarui pemesanan tiket.
 - **Total Harga**: Menampilkan total harga tiket yang dipesan.
 - **Upload Gambar**: Mengizinkan pengguna untuk mengupload gambar terkait pemesanan.
 - **Waktu dan Tanggal**: Menampilkan waktu dan tanggal saat ini yang diperbarui setiap detik.
+- **Tampilan Klasemen**: Pengguna dapat melihat klasemen tim yang berpartisipasi dalam jendela terpisah.
 
 ## Prasyarat
 
@@ -33,6 +34,7 @@ Sebelum menjalankan aplikasi, pastikan Anda memiliki:
 6. Anda dapat memperbarui atau menghapus tiket yang telah dipesan.
 7. Klik "Reset Total & Tiket" untuk menghapus semua pemesanan.
 8. Untuk mengupload gambar, klik tombol "Upload Gambar".
+9. Klik tombol "Cek Klasemen" untuk mengecek klasemen pekan ke 7
 
 ## Struktur Kode
 

@@ -16,7 +16,6 @@ public class PemesananTiketApp {
     public DecimalFormat currencyFormat = new DecimalFormat("###,###.##");
     public String imagePath;
 
-    // Data pertandingan dan jam main
     private String[][] matches = {
             {"Atalanta vs Sturm Graz", "Rabu, 22 Januari 2024, 0:45"},
             {"Monaco vs Aston Villa", "Rabu, 22 Januari 2024, 0:45"},
@@ -38,7 +37,6 @@ public class PemesananTiketApp {
             {"Paris Saint-Germain vs Manchester City", "Kamis, 23 Januari 2024, 3:00"}
     };
 
-    // Klasemen tim
     private String[][] standings = {
             {"1", "Liverpool", "6", "6", "0", "0", "13", "1", "+12", "18"},
             {"2", "Barcelona", "6", "5", "0", "1", "21", "7", "+14", "15"},
@@ -78,7 +76,6 @@ public class PemesananTiketApp {
             {"36", "Young Boys", "6", "0", "0", "6", "3", "22", "-19", "0"}
     };
 
-    // Harga berdasarkan jenis kursi
     private final int ECONOMY_PRICE = 100000;
     private final int VIP_PRICE = 250000;
     private final int VVIP_PRICE = 500000;
@@ -89,14 +86,12 @@ public class PemesananTiketApp {
         frame.setSize(800, 600);
         frame.setLocationRelativeTo(null);
 
-        // GUI Layout
         JPanel panel = new JPanel(new BorderLayout());
 
-        // Table Setup
         tableModel = new DefaultTableModel(new String[]{"Nama", "Pertandingan", "Jumlah Tiket", "Jenis Kursi (Harga)", "Total Harga (Rp)", "Gambar"}, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // Prevent editing
+                return false;
             }
         };
         table = new JTable(tableModel) {
@@ -111,11 +106,10 @@ public class PemesananTiketApp {
         table.setBackground(new Color(230, 255, 230));
         table.setGridColor(Color.GRAY);
         table.setSelectionBackground(new Color(100, 200, 100));
-        table.getColumnModel().getColumn(5).setPreferredWidth(100); // Set width for image column
+        table.getColumnModel().getColumn(5).setPreferredWidth(100);
         JScrollPane tableScroll = new JScrollPane(table);
         panel.add(tableScroll, BorderLayout.CENTER);
 
-        // Input Panel
         JPanel inputPanel = new JPanel(new GridLayout(8, 2, 5, 5));
         inputPanel.setBackground(new Color(220, 240, 255));
         inputPanel.add(new JLabel("Nama:"));
@@ -132,7 +126,6 @@ public class PemesananTiketApp {
         inputPanel.add(quantityField);
         inputPanel.add(new JLabel("Jenis Kursi:"));
 
-        // Menambahkan harga di samping pilihan jenis kursi
         String[] kursiOptions = {"Ekonomi (Rp " + currencyFormat.format(ECONOMY_PRICE) + ")",
                 "VIP (Rp " + currencyFormat.format(VIP_PRICE) + ")",
                 "VVIP (Rp " + currencyFormat.format(VVIP_PRICE) + ")"};
@@ -159,7 +152,6 @@ public class PemesananTiketApp {
         inputPanel.add(checkStandingsButton);
         panel.add(inputPanel, BorderLayout.SOUTH);
 
-        // Total Harga Panel
         JPanel totalPanel = new JPanel(new BorderLayout());
         totalPanel.setBackground(new Color(255, 240, 200));
         totalLabel = new JLabel("Total Harga: Rp 0");
@@ -174,11 +166,9 @@ public class PemesananTiketApp {
         frame.add(panel);
         frame.setVisible(true);
 
-        // Timer untuk update waktu setiap detik
         Timer timer = new Timer(1000, e -> updateDateTime());
         timer.start();
 
-        // Action Listeners
         addButton.addActionListener(e -> addItem(matchComboBox.getSelectedItem().toString().split(" \\(")[0], (String) kursiComboBox.getSelectedItem()));
         deleteButton.addActionListener(e -> deleteItem());
         updateButton.addActionListener(e -> updateItem(matchComboBox.getSelectedItem().toString().split(" \\(")[0], (String) kursiComboBox.getSelectedItem()));
@@ -284,7 +274,7 @@ public class PemesananTiketApp {
 
     private ImageIcon resizeImage(String imagePath, int width, int height) {
         ImageIcon imageIcon = new ImageIcon(imagePath);
-        Image image = imageIcon.getImage(); // Transform it
+        Image image = imageIcon.getImage();
         Image newImage = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
         return new ImageIcon(newImage);
     }
@@ -301,7 +291,7 @@ public class PemesananTiketApp {
     private void clearFields() {
         nameField.setText("");
         quantityField.setText("");
-        imagePath = null; // Reset image path
+        imagePath = null;
     }
 
     private void showStandings() {
